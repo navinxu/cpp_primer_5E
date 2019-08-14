@@ -1,44 +1,46 @@
 /*================================================================
-*   Copyright (C) 2018 Navin Xu. All rights reserved.
+*   Copyright (C) 2019 Navecin Xu. All rights reserved.
 *   
 *   Filename    ：p094-3.3.3-ex3.20-02.cpp
-*   Author      ：Navin Xu
-*   E-Mail      ：admin@navinxu.com
-*   Create Date ：2018年12月03日
+*   Author      ：Navecin Xu
+*   E-Mail      ：admin@navecinxu.com
+*   Create Date ：2019年08月15日
 *   Description ：
 ================================================================*/
 #include <iostream>
 #include <vector>
+using namespace std;
 
 int main() {
-    std::vector<unsigned int> integers;
-    unsigned int num;
-    while (std::cin >> num) {
-        std::cout << num << " ";
-        integers.push_back(num);
+
+    int input;
+    vector<int> veci;
+
+    while (cin >> input)
+        veci.push_back(input);
+
+    if (veci.empty()) {
+
+        cout << "请输入一些数字！" << endl;
+        return 1;
     }
-    std::cout << std::endl;
 
-    unsigned int end;
-    unsigned int head;
-    decltype(integers.size()) end_index = integers.size();
-    for (decltype(integers.size()) index = 0; index < end_index; index ++) {
-        if (integers.size() < 2) {
-            std::cout << integers[index] << std::endl;;
-            break;
-        }
+    cout << "Numbers: ";
+    for (auto num : veci)
+        cout << num << " ";
+    cout << endl;
 
-        head = integers[index];
-        end = integers[integers.size() - index - 1];
+    auto size = veci.size();
+    unsigned char is_odd = 0;
+    if (size % 2 != 0)
+        is_odd = 1;
 
-        if (index == (integers.size() - index - 1))
-            std::cout << head << std::endl;
-        else
-            std::cout << head + end << std::endl;
+    for (decltype(size) index = 0; index < size / 2; index ++) {
+        cout << veci[index] << " + " << veci[size - index - 1] << " = " << veci[index] + veci[size - index - 1] << endl;
 
-        end_index--;
+        if (index == size / 2 - 1 && is_odd)
+            cout << veci[size / 2] << endl;
     }
 
     return 0;
 }
-

@@ -1,32 +1,34 @@
 /*================================================================
 *   Copyright (C) 2019 Navin Xu. All rights reserved.
 *   
-*   Filename    ：p094-3.3.3-ex3.20.cpp
+*   Filename    ：p091-3.3.2-ex3.14-02.cpp
 *   Author      ：Navin Xu
 *   E-Mail      ：admin@navinxu.com
-*   Create Date ：2019年08月15日
+*   Create Date ：2019年08月14日
 *   Description ：
 ================================================================*/
 #include <iostream>
 #include <vector>
+#include <cctype>
 using namespace std;
 
 int main() {
 
     int input;
     vector<int> vi;
-
-    while (cin >> input)
+    char c;
+    
+    while (cin >> input) {
         vi.push_back(input);
 
-    cout << "Numbers: ";
-    for (auto num : vi)
-        cout << num << " ";
-    cout << endl;
-
-    for (decltype(vi.size()) index = 0; index < vi.size() - 1; index ++) {
-        cout << vi[index] << " + " << vi[index + 1] << " = " << vi[index] + vi[index + 1] << endl;
+        cout << "Continue(Y/N): ";
+        cin >> c;
+        if (c != 'Y' && c != 'y')
+            break;
     }
+
+    for (auto i : vi)
+        cout << i << " ";
 
     return 0;
 }
