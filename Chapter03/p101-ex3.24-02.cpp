@@ -1,64 +1,44 @@
 /*================================================================
 *   Copyright (C) 2019 Navin Xu. All rights reserved.
 *   
-*   Filename    ：p101-ex3.24-02.cpp
+*   Filename    ：p101-3.4.2-ex3.24.cpp
 *   Author      ：Navin Xu
 *   E-Mail      ：admin@navinxu.com
-*   Create Date ：2019年08月31日
+*   Create Date ：2019年09月11日
 *   Description ：
 ================================================================*/
 #include <iostream>
 #include <vector>
 using namespace std;
 
+
 int main() {
 
     vector<int> veci;
-    int input;
 
+    int input;
     while (cin >> input) {
         veci.push_back(input);
     }
 
-    for (auto beg = veci.cbegin(), end = veci.cend(); beg != end; beg ++) {
-        if (beg == veci.begin())
-            cout << *beg;
-        else
-            cout << " " << *beg;
+    auto c_begin = veci.cbegin();
+    auto c_end = veci.cend();
 
-        if (beg == end - 1)
-            cout << endl;
-    }
-
-    vector<int>::iterator beg = veci.begin(), end = veci.end();
-
-    if (beg != end)
-        end --;
-    else  {
-        cout << "请输入至少一个数字" << endl;
+    if (c_begin == c_end) {
+        cout << "没有任何元素" << endl;
         return 0;
     }
 
-    // 0 1 2 3
-    // 0 1 2 3 4
-    int head, tail;
-    for (; beg <= end; beg ++, end --) {
+    for (auto begin = veci.begin(), end = veci.end(); begin < end; begin ++)
+        cout << *begin << " "; 
+    cout << endl;
 
-        head = *beg;
-        tail = (beg == end) ? 0 : *end;
-        //if (beg == end)
-        //    tail = 0;
-        //else
-        //    tail = *end;
-
-        if (beg == veci.begin()) {
-            cout << head + tail;
-        } else {
-            cout << " " << head + tail;
-        }
+    for (auto begin = veci.begin(), end = veci.end() - 1; begin <= end; begin ++, end --) {
+        if (begin == end)
+            cout << *begin << endl;
+        else
+            cout << *begin + *end << endl;
     }
-
-    
 
     return 0;
 }
